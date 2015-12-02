@@ -16,6 +16,6 @@ def get_google_new_results( term, site, count ):
 
     return results
 
-items = get_google_new_results( 'Syrian+refugees', 'www.washingtonpost.com', 50 )
+items = get_google_new_results( 'Beirut+attack', 'www.washingtonpost.com', 50 )
 for i,e in enumerate(items):
     print '%d: %s' % (i+1,e,)
