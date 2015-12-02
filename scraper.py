@@ -7,7 +7,7 @@ def get_google_new_results( term, site, count ):
     elements = obj.getElementsByTagName('title')[2:] # To get rid of unwanted title elements in XML doc    
     links = obj.getElementsByTagName('link')[2:]
     print links
-    for element in elements[:count]:
+    for element in elements[:50]:
         headline =  element.childNodes[0].data
         for link in links:
             url = link.childNodes[0].data.split('=')[-1]
