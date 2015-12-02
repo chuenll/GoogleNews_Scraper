@@ -1,12 +1,13 @@
 import urllib2
 from xml.dom.minidom import parseString
 
-def get_google_new_results( term, count ):
+def get_google_new_results( term, site, count ):
     results = []
     obj = parseString( urllib2.urlopen('http://news.google.com/news?q=%s&output=rss' % term).read() )
 
     elements = obj.getElementsByTagName('title')[2:] # To get rid of unwanted title elements in XML doc    
     links = obj.getElementsByTagName('link')[2:]
+    sites=obj.getElementsByTagName('site')[2:]
     print links
     for element in elements[:count]:
         headline =  element.childNodes[0].data
@@ -17,6 +18,6 @@ def get_google_new_results( term, count ):
 
     return results
 
-items = get_google_new_results( 'Syrian+refugees', 50 )
+items = get_google_new_results( 'Syrian+refugees', 'www.washingtonpost.com', 50 )
 for i,e in enumerate(items):
     print '%d: %s' % (i+1,e,)
