@@ -3,7 +3,8 @@ from xml.dom.minidom import parseString
 
 def get_google_new_results( term, site, count ):
     results = []
-    obj = parseString( urllib2.urlopen('http://news.google.com/news?q={}+site%3A{}&output=rss' .format(term,site)).read() )
+    obj = parseString( urllib2.urlopen('https://www.google.ca/search?hl=en&gl=ca&tbm=nws&authuser=0&q={}+site:{}&hl=en&gl=ca&authuser=0&tbm=nws&start=1
+&output=rss' .format(term,site)).read() )
     elements = obj.getElementsByTagName('title')[2:] # To get rid of unwanted title elements in XML doc    
     links = obj.getElementsByTagName('link')[2:]
     print links
